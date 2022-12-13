@@ -1,6 +1,6 @@
-import {Template} from "meteor/templating";
+import { Template } from "meteor/templating";
 
-Template.signInPage.onRendered(function (){
+Template.signInPage.onRendered(function () {
   const userId = localStorage.getItem("userId")
   const userInput = this.find('#chat-user-id')
   const checkbox = this.find('#id-switch');
@@ -21,10 +21,6 @@ Template.signInPage.events({
 })
 
 function login_info(evt, ins) {
-  // const user = Meteor.user()
-  // console.log(user)
-  // localStorage.setItem('username')
-
 
   const userId = ins.find('#chat-user-id').value
   const password = ins.find('#chat-user-password').value
@@ -38,14 +34,13 @@ function login_info(evt, ins) {
     if (!error) {
       Meteor.logoutOtherClients()
       alert("로그인 성공")
-      if(checked){
+      if (checked) {
         localStorage.setItem("userId", userId)
-      }else{
+      } else {
         localStorage.removeItem("userId")
       }
     } else {
       alert("아이디, 패스워드를 확인해주세요")
     }
-
   })
 }
