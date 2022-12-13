@@ -1,23 +1,33 @@
 <template name="signInPage">
-  <div class="d-flex w-100 h-100 align-items-center justify-content-center" >
-    <div class="pb-5">
+  <div class="bg-duck d-flex w-100 h-100 align-items-center justify-content-center">
+    <div class="pb-5 ">
       {{!--    헤더--}}
-      <div id="header" class="">
+      <div id="header">
         <div class="d-flex justify-content-center">
-          <img class="p-5 w-75 " src="/logo1.png">
+          <img class="w-25" src="/logo2.png">
         </div>
       </div>
       {{!--form--}}
-      <div id="container" class="d-flex display-6    border rounded justify-content-center p-2 ">
+      <div id="container" class="d-flex display-6 justify-content-center p-2 ">
         <div class="content p-5">
           <div>
-            <input class="login-info rounded-top text-bg-light p-2 border border-white fs-3 w-100" type="text" name="userId" placeholder="ID">
+            <input id="chat-user-id" class="login-info rounded-top text-bg-light p-2 border border-white fs-3 w-100" type="text"
+                   placeholder="ID">
           </div>
           <div>
-            <input class="login-info rounded-bottom text-bg-light p-2 border border-white fs-3 w-100" type="password" name="password" placeholder="password">
+            <input id="chat-user-password" class="login-info rounded-bottom text-bg-light p-2 border border-white fs-3 w-100" type="password"
+                   placeholder="password">
+          </div>
+          <div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="id-switch">
+              <label class="form-check-label fs-5 fw-bolder text-secondary" for="flexSwitchCheckDefault">아이디 기억하기</label>
+            </div>
           </div>
           <div class="d-flex justify-content-center">
-            <input class="login-btn p-3 mt-4 btn btn btn-warning w-100 border border-warning text-white fw-bold fs-4 " type="button" value="로그인">
+            <input class="login-btn p-3 mt-4 btn btn btn-success w-100 border border-success text-white fw-bold fs-4 "
+                   type="button"
+                   value="로그인">
           </div>
         </div>
       </div>

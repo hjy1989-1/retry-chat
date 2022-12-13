@@ -1,5 +1,14 @@
 import {Template} from "meteor/templating";
 
+Template.signInPage.onRendered(function (){
+  const userId = localStorage.getItem("userId")
+  const userInput = this.find('#chat-user-id')
+  const checkbox = this.find('#id-switch');
+
+  userInput.value = userId
+  checkbox.checked = Boolean(userId)
+})
+
 Template.signInPage.events({
   "click .login-btn": function (evt, ins) {
     login_info(evt, ins)
@@ -12,18 +21,31 @@ Template.signInPage.events({
 })
 
 function login_info(evt, ins) {
-  const userId = ins.find('input[name=userId]').value;
-  const password = ins.find('input[name=password]').value;
-  let text = ins.find('.login-info').value
+  // const user = Meteor.user()
+  // console.log(user)
+  // localStorage.setItem('username')
 
+
+  const userId = ins.find('#chat-user-id').value
+  const password = ins.find('#chat-user-password').value
+  const checked = ins.find('#id-switch').checked;
+
+  (!userId || !password) && alert("빠짐없이 입력해주세요")
+
+  userId && password &&
   Meteor.loginWithPassword(userId, password, function (error) {
+
     if (!error) {
-      Meteor.logoutOtherClients();
+      Meteor.logoutOtherClients()
       alert("로그인 성공")
-    } else if (text === "") {
-      alert("빠짐없이 입력해주세요")
+      if(checked){
+        localStorage.setItem("userId", userId)
+      }else{
+        localStorage.removeItem("userId")
+      }
     } else {
-      alert("아이디, 패스워드 확인해주세요")
+      alert("아이디, 패스워드를 확인해주세요")
     }
+
   })
 }
